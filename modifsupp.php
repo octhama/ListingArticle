@@ -38,12 +38,12 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
 
 // Traitement pour la modification
 if (isset($_POST['modifier'])) {
-    $id = isset($_POST['id']) ? $_POST['id'] : '';
-    $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
-    $alias = isset($_POST['alias']) ? $_POST['alias'] : '';
-    $contenu = isset($_POST['contenu']) ? $_POST['contenu'] : '';
-    $dateajout = !empty($_POST['dateajout']) ? $_POST['dateajout'] : date('Y-m-d');
-    $datemaj = isset($_POST['datemaj']) ? $_POST['datemaj'] : date('Y-m-d');
+    $id = $_POST['id'] ?? ''; // Récupération de l'ID de la news à modifier
+    $titre = $_POST['titre'] ?? ''; // Récupération des données du formulaire
+    $alias = $_POST['alias'] ?? '';  // Récupération des données du formulaire
+    $contenu = $_POST['contenu'] ?? ''; // Récupération des données du formulaire
+    $dateajout = !empty($_POST['dateajout']) ? $_POST['dateajout'] : date('Y-m-d'); // Récupération des données du formulaire
+    $datemaj = $_POST['datemaj'] ?? date('Y-m-d'); // Récupération des données du formulaire
 
     // Modification des données du formulaire dans la base de données sandboxnews
     $sql = "UPDATE sandboxnews SET Titre=:titre, Alias=:alias, Contenu=:contenu, Dateajout=:dateajout, Datemaj=:datemaj WHERE id=:id";
@@ -159,9 +159,10 @@ if (isset($_POST['modifier']) && isset($_POST['id'])) {
         <input type="date" name="datemaj" id="datemaj" value="<?= $dataById['Datemaj'] ?>" required>
         <input type="submit" name="modifier" value="Enregistrer">
     </form>
-    <a href="index.php">Retour à l'accueil</a>
+
     <?php
 }
 ?>
+<a href="index.php">Retour à l'accueil</a>
 </body>
 </html>

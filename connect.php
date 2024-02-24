@@ -1,13 +1,12 @@
 <?php
-
 class connect
 {
     //Definition des credentials correspondant au serveur permettant l'accès et la connexion à la base de données
-    private $host = 'localhost';
-    private $dbname = 'sandboxnews';
-    private $username = 'root';
-    private $password = 'root'; // Mot de passe à modifier en fonction de votre configuration (Usage de MAMP dans ce cas)
-    public $conn; // Variable de connexion à la base de données
+    private string $host = 'localhost';
+    private string $dbname = 'sandboxnews';
+    private string $username = 'root';
+    private string $password = 'root'; // Mot de passe à modifier en fonction de votre configuration (Usage de MAMP dans ce cas)
+    public ?PDO $conn; // Variable de connexion à la base de données
 // Connexion à la base de données
     public function connect()
     {
